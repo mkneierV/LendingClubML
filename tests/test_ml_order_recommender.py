@@ -11,7 +11,7 @@ from lending_club_ml.model_lib.base import BaseLoanModel
 class DummyModel(BaseLoanModel):
     def recommend(self, listed_notes, value=25):
         chosen_notes = listed_notes[:2]
-        return {n['loanId']: {'amount': value} for n in chosen_notes}
+        return {n['id']: {'amount': value} for n in chosen_notes}
 
 
 class TestMLOrderRecommender(unittest.TestCase):
@@ -27,9 +27,9 @@ class TestMLOrderRecommender(unittest.TestCase):
         httpretty.register_uri(
             method=httpretty.GET,
             uri='/'.join([API_CONFIG['base_url'], API_CONFIG['version'], 'loans/listing']),
-            body=json.dumps({"loans": [{'loanId': 'l1'},
-                                       {'loanId': 'l2'},
-                                       {'loanId': 'l3'}]})
+            body=json.dumps({"loans": [{'id': 'l1'},
+                                       {'id': 'l2'},
+                                       {'id': 'l3'}]})
         )
 
         rec = self.order_recommender.get_model_rec()
@@ -56,9 +56,9 @@ class TestMLOrderRecommender(unittest.TestCase):
         httpretty.register_uri(
             method=httpretty.GET,
             uri='/'.join([API_CONFIG['base_url'], API_CONFIG['version'], 'loans/listing']),
-            body=json.dumps({"loans": [{'loanId': 'l1'},
-                                       {'loanId': 'l2'},
-                                       {'loanId': 'l3'}]})
+            body=json.dumps({"loans": [{'id': 'l1'},
+                                       {'id': 'l2'},
+                                       {'id': 'l3'}]})
         )
         httpretty.register_uri(
             method=httpretty.POST,
