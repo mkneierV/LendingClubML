@@ -52,7 +52,7 @@ class MLOrderRecommender(object):
         )
         return chosen_notes
 
-    def examine_order(self, **kwargs):
+    def examine_rec_order(self, **kwargs):
         listed_loans = self.lc_connection.get_listed_loans().json()['loans']
         listed_dict = {x['id']: x for x in listed_loans}
         note_dict = self.get_model_rec(**kwargs)
