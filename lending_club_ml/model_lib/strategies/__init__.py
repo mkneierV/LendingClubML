@@ -1,1 +1,1 @@
-__author__ = 'michaelkneier'
+from topxstrategy import TopXStrategy

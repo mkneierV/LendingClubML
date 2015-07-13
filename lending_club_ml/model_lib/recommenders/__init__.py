@@ -1,1 +1,1 @@
-__author__ = 'michaelkneier'
+from classifier_recommender import ClassifierRecommender
