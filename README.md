@@ -24,6 +24,7 @@ lc.get_balance()
 lc.submit_order(loan_ids=[112358], loan_amounts=[25], portfolio_id=1)
 ```
 
+
 ### Building a model and executing an order:
 ```
 from sklearn.linear_model import LogisticRegression
@@ -55,3 +56,34 @@ print recommender.examine_rec_order()
 # Execute order on Lending Club
 recommender.execute_recommended_order()
 ```
+
+
+### Custom Recommender
+```
+from lending_club_ml import MLOrderRecommender
+from lending_club_ml.model_lib.base import BaseLoanModel
+
+
+class DummyModel(BaseLoanModel):
+    def recommend(self, listed_loans):
+        chosen_notes = listed_notes[:2]
+        return {note['id']: {'amount': value} for note in chosen_notes}
+
+
+recommender = ClassifierRecommender(
+    model = model,
+    adaptor=Adaptor()
+    strategy=TopXStrategy(n_notes=5, cash_per_note=25)
+)
+
+recommender = MLOrderRecommender(
+    authorization='topsecret',
+    investor_id=123,
+    note_model=recommender
+)
+                                 
+# Print information on recommended notes to buy
+print recommender.examine_rec_order()
+
+# Execute order on Lending Club
+recommender.execute_recommended_order()
