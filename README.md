@@ -4,10 +4,10 @@ Python module for interacting with Lending Club's API and executing machine lear
 The main entry point, MLOrderRecommender, must be initialized with a fitted model with a recommend() method, which takes open loans and returns the loan ids and amounts to be invested in them. The recommenders and strategies in lending_club_ml.model_lib proivde a framework for creating these models.
 
 
-Examples:
+## Examples:
 
 
-# Interacting with Lending Club:
+### Interacting with Lending Club:
 ```
 from lending_club_ml import LendingClubConnection, Order
 
@@ -24,7 +24,7 @@ lc.get_balance()
 lc.submit_order(loan_ids=[112358], loan_amounts=[25], portfolio_id=1)
 ```
 
-# Building a model and executing an order:
+### Building a model and executing an order:
 ```
 from sklearn.linear_model import LogisticRegression
 
@@ -37,13 +37,17 @@ from lending_club_ml.model_lib.strategies import TopXStrategy
 model = LogisticRegression()
 # Lending club data may be found here: https://www.lendingclub.com/info/download-data.action
 model.fit(lending_club_data, response)
-recommender = ClassifierRecommender(model = model,
-                                    adaptor=Adaptor()
-                                    strategy=TopXStrategy(n_notes=5, cash_per_note=25))
+recommender = ClassifierRecommender(
+    model = model,
+    adaptor=Adaptor()
+    strategy=TopXStrategy(n_notes=5, cash_per_note=25)
+)
 
-recommender = MLOrderRecommender(authorization='topsecret',
-                                 investor_id=123,
-                                 note_model=recommender)
+recommender = MLOrderRecommender(
+    authorization='topsecret',
+    investor_id=123,
+    note_model=recommender
+)
                                  
 # Print information on recommended notes to buy
 print recommender.examine_rec_order()
