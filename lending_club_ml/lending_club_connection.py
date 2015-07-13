@@ -7,20 +7,14 @@ from config import API_CONFIG
 
 
 class LendingClubConnection(object):
-    """
-    Main class for interacting for interacting with Lending Club.
+    """ Main class for interacting for interacting with Lending Club.
 
-    Parameters
-    ----------
-
-    logger : `Logger <http://docs.python.org/2/library/logging.html>`_
-        A python logger used to get debugging output from this module.
-
-    authorization: HMAC authorization provided by lendingclub
-
-    Examples
-    --------
-
+    :param authorization: HMAC authorization code from Lending Club.
+        Intructions for generating this can be found here:
+        https://www.lendingclub.com/developers/authentication.action
+    :param investor_id: Id for executing order. This can be obtained from
+        the Account Summary section on Lending Club website when a user is logged in.
+    :param logger: logging instance
     """
 
     base_url = '/'.join([

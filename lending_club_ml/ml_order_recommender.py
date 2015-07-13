@@ -5,7 +5,7 @@ from lending_club_ml.lending_club_connection import LendingClubConnection
 
 
 class MLOrderRecommender(object):
-    """ Main class for programatically creating recommender
+    """ Main class for recommending and executing orders from a model
 
     :param note_recommender: Recommender with a recommend method for deciding on loans to invest in.
         Expected to return a mapping of at least {id: {amount: dollar_amount}}
