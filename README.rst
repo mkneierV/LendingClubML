@@ -12,7 +12,7 @@ Examples:
 
 **Interacting with Lending Club:**
 
-.. code:: python
+.. code-block:: python
     from lending_club_ml import LendingClubConnection, Order
 
     lc = LendingClubConnection(authorization='topsecret',
