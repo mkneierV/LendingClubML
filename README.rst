@@ -1,14 +1,17 @@
-# LendingClubML
+**************
+LendingClubML
+**************
+
 Python module for interacting with Lending Club's API and executing machine learning investment strategies.
 
 The main entry point, MLOrderRecommender, must be initialized with a fitted model with a recommend() method, which takes open loans and returns the loan ids and amounts to be invested in them. The recommenders and strategies in lending_club_ml.model_lib proivde a framework for creating these models.
 
+=========
+Examples:
+=========
 
-## Examples:
-
-
-### Interacting with Lending Club:
-```
+**Interacting with Lending Club:**
+``
 from lending_club_ml import LendingClubConnection, Order
 
 lc = LendingClubConnection(authorization='topsecret',
@@ -22,11 +25,11 @@ lc.get_balance()
 
 # Submit an order
 lc.submit_order(loan_ids=[112358], loan_amounts=[25], portfolio_id=1)
-```
+``
 
 
-### Building a model and executing an order:
-```
+**Building a model and executing an order:**
+``
 from sklearn.linear_model import LogisticRegression
 
 from lending_club_ml import MLOrderRecommender
@@ -55,11 +58,11 @@ print recommender.examine_rec_order()
 
 # Execute order on Lending Club
 recommender.execute_recommended_order()
-```
+``
 
 
-### Custom Recommender
-```
+**Custom Recommender:**
+``
 from lending_club_ml import MLOrderRecommender
 from lending_club_ml.model_lib.base import BaseLoanModel
 
@@ -87,3 +90,4 @@ print recommender.examine_rec_order()
 
 # Execute order on Lending Club
 recommender.execute_recommended_order()
+``
