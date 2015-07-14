@@ -10,22 +10,21 @@ The main entry point, MLOrderRecommender, must be initialized with a fitted mode
 Examples:
 =========
 
-**Interacting with Lending Club:**
-``
-from lending_club_ml import LendingClubConnection, Order
+**Interacting with Lending Club:**::
+    from lending_club_ml import LendingClubConnection, Order
 
-lc = LendingClubConnection(authorization='topsecret',
+    lc = LendingClubConnection(authorization='topsecret',
                            investor_id=123)
                      
-# Retrieve available loans to invest in
-lc.get_listed_loans()
+    # Retrieve available loans to invest in
+    lc.get_listed_loans()
 
-# Get account balance
-lc.get_balance()
+    # Get account balance
+    lc.get_balance()
 
-# Submit an order
-lc.submit_order(loan_ids=[112358], loan_amounts=[25], portfolio_id=1)
-``
+    # Submit an order
+    lc.submit_order(loan_ids=[112358], loan_amounts=[25], portfolio_id=1)
+
 
 
 **Building a model and executing an order:**
