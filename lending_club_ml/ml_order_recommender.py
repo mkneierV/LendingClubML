@@ -1,5 +1,4 @@
 from cytoolz.dicttoolz import merge
-import pandas as pd
 
 from lending_club_ml.lending_club_connection import LendingClubConnection
 
@@ -56,5 +55,4 @@ class MLOrderRecommender(object):
         listed_loans = self.lc_connection.get_listed_loans().json()['loans']
         listed_dict = {x['id']: x for x in listed_loans}
         note_dict = self.get_model_rec(**kwargs)
-        return pd.DataFrame([merge(note_dict[key], listed_dict[key])
-                             for key in note_dict])
+        return [merge(note_dict[key], listed_dict[key]) for key in note_dict]

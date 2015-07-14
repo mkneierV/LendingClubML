@@ -1,5 +1,3 @@
-from itertools import cycle
-
 from cytoolz.dicttoolz import merge
 import requests
 
