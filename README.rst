@@ -77,7 +77,9 @@ Examples:
             chosen_notes = listed_notes[:2]
             return {note['id']: {'amount': value} for note in chosen_notes}
     
-    
+
+    model = DummyModel()
+
     recommender = ClassifierRecommender(
         model = model,
         adaptor=Adaptor()
