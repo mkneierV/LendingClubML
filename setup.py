@@ -1,20 +1,23 @@
 from distutils.core import setup
 
 setup(
-    name='lending_club_ml',
-    version='1.0.0',
+    name='LendingClubML',
+    packages = ['LendingClubML'],
+    version='0.1.0',
     author='Michael Kneier',
-    author_email='michaeljkneier@gmail.com',
-    packages=['lending_club_ml', 'lending_club_ml.tests'],
+    author_email='michaelkneier@gmail.com',
     url='http://github.com/mkneierV/LendingClubML',
     license=open('LICENSE.txt').read(),
-    description='An library for Lending Club that lets you us ML models to pick notes to invest in',
+    description="Package for interacting with Lending Club's REST API, and for building and implementing sophisticated investment strategies.",
     long_description=open('README.rst').read(),
     install_requires=[
         "requests >= 1.2.3",
         "beautifulsoup4 >= 4.1.3",
         "html5lib >= 0.95",
-        "pybars >= 0.0.4"
+        "pybars >= 0.0.4",
+        "httpretty >= 0.8.10",
+        "pandas >= 0.16.0",
+        "numpy >= 1.5.0"
     ],
     platforms='osx, posix, linux, windows',
     classifiers=[
@@ -27,9 +30,8 @@ setup(
         'Operating System :: POSIX',
         'Intended Audience :: Developers',
         'Intended Audience :: Information Technology',
-        'Environment :: Console',
         'Topic :: Office/Business :: Financial',
         'Topic :: Utilities'
     ],
-    keywords='lending_club_ml investing api lending club'
+    keywords=['lending club', 'investing', 'api', 'machine learning', 'programmatic investing']
 )
